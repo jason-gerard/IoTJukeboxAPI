@@ -105,7 +105,7 @@ for file in files:
                 break
 
         for line in reader:
-            if line.startswith("int melody[]") or line.startswith("const int melody[] PROGMEM"):
+            if line.startswith("int melody[]") or line.startswith("const int melody[] PROGMEM") or line.startswith("const PROGMEM int melody[]"):
                 break
 
         for line in reader:
@@ -122,6 +122,9 @@ for file in files:
         for i in range(len(melody)):
             if i % 2 == 0:
                 melody[i] = str(note_to_int[melody[i]])
+
+        # Take the first 20 notes
+        melody = melody[:20*2]
 
         print(tempo)
         print(melody)
